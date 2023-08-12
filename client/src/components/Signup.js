@@ -13,7 +13,7 @@ const Signup = ({ showAlert }) => {
             showAlert("Passwords don't match", "danger")
             return;
         }
-        const response = await fetch("http://localhost:5000/api/user/createuser", {
+        const response = await fetch("https://notecraft.onrender.com/api/user/createuser", {
             method: "post",
             headers: {
                 "Content-type": "application/json"

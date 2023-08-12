@@ -15,7 +15,6 @@ app.use("/api/user",authRouter)
 app.use("/api/notes", notesRouter)
 
 
-// mongodb://localhost:27017/iNoteMERN
 mongoose.connect(process.env.MONGO_URL)
 .then(()=>app.listen(PORT,()=>console.log(`server running on port ${PORT}`)))
 .catch((err)=>console.log(err))
