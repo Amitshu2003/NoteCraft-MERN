@@ -1,8 +1,10 @@
-# NoteCraft - Your Digital Notes Workspace
-
-**Description:**
+# NoteCraft | Your Digital Notes Workspace
 
 NoteCraft is a feature-rich MERN (MongoDB, Express.js, React, Node.js) stack application that provides users with seamless note management. Users can add, edit, view, and save notes, with the added functionality of marking notes as favorites. The application has a robust login system to ensure data privacy and secure access for users.
+
+## Live URL
+[Click here to access the NoteCraft website](https://notecraft-mern.netlify.app)
+
 
 **Key Features:**
 
