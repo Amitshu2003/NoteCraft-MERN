@@ -26,5 +26,4 @@ router.delete('/deletenote/:id', verifyUser, deleteNote)
 router.get('/search',verifyUser, fetchNotesBySearchQuery)
 
 
-
 export default router

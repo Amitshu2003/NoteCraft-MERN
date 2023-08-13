@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import noteContext from '../context/notes/noteContext'
+import noteContext from '../../context/notes/noteContext'
 import NoteItem from './NoteItem'
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
@@ -12,19 +12,20 @@ const Notes = ({ showAlert }) => {
   if (location.pathname === '/liked') {
     notes = notes.filter((item) => item.liked === true)
   }
+
   const [note, setNote] = useState({ id: "", title: "", description: "", tag: "" })
   const ref = useRef(null)
   const refClose = useRef(null)
 
   let [searchParams] = useSearchParams()
   const term = searchParams.get("term")
-
   useEffect(() => {
     if (localStorage.getItem('token')) {
       if (location.pathname === '/search') searchNotes(term)
       else getNotes()
     }
     else navigate("/login")
+    // eslint-disable-next-line 
   }, [location])
 
   const updateNote = (currentNote) => {
@@ -86,7 +87,9 @@ const Notes = ({ showAlert }) => {
         </div>
       </div>
       <div className='row my-3'>
+
         <h2>Your Notes</h2>
+
         {
           !notes.length ? <div className='container mx-2'> No Notes to display </div> :
             <>

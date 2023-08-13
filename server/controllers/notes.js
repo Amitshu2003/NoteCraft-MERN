@@ -1,18 +1,22 @@
 import Notes from "../models/Note.js"
 import { validationResult } from 'express-validator'
-import paginate from 'jw-paginate'
-
 
 export const fetchAllNotes = async (req, res) => {
-    const data = await Notes.find({ user: req.userId })
-    res.send(data)
+    try {
+        const data = await Notes.find({ user: req.userId })
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Internal Server Error")
+    }
+
 }
 
 export const fetchNotesBySearchQuery = async (req, res) => {
     const { term } = req.query
 
     try {
-        const title = new RegExp(term, 'i') 
+        const title = new RegExp(term, 'i')
         const result = await Notes.find({ user: req.userId, title: title })
         res.json(result)
     } catch (error) {

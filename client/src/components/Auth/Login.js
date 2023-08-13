@@ -18,7 +18,7 @@ const Login = ({showAlert}) => {
             body:JSON.stringify({email,password})
         })
         const res = await response.json()
-        console.log(res);
+
         if(res.success){
             //save the auth token and redirect to home page
             localStorage.setItem('token', res.authToken)

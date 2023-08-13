@@ -2,10 +2,10 @@ import { useState } from "react";
 import noteContext from "./noteContext";
 
 const NoteState = (props) => {
-  const url = "https://notecraft.onrender.com/"
+  const url = "https://notecraft.onrender.com"
+  // const url = "http://localhost:5000"
 
   const [notes, setNotes] = useState([])
- 
 
   // GET all notes
   const getNotes = async () => {
@@ -33,7 +33,6 @@ const NoteState = (props) => {
       }
     })
     const res = await response.json()
-    console.log(res);
     setNotes(res)
   }
 
@@ -55,7 +54,7 @@ const NoteState = (props) => {
 
   // Delete a note
   const deleteNote = async (id) => {
-
+    // eslint-disable-next-line
     const response = await fetch(`${url}/api/notes/deletenote/${id}`, {
       method: 'DELETE',
       headers: {
@@ -63,7 +62,7 @@ const NoteState = (props) => {
         'auth-token': localStorage.getItem('token')
       }
     })
-
+    // console.log(response);
     const newNotes = notes.filter((note) => note._id !== id)
     setNotes(newNotes)
   }
@@ -80,25 +79,28 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag })
     })
+    // eslint-disable-next-line
     const res = await response.json()
     // console.log(res);
 
     // this will create a new copy of notes array so that we can update notes state using setState
-    let newNotes = JSON.parse(JSON.stringify(notes))
+    let newNotes = [...notes]
 
-    newNotes.map((note) => {
+    newNotes.forEach(note => {
       if (note._id === id) {
         note.title = title
         note.description = description
         note.tag = tag
       }
     })
+
     setNotes(newNotes)
   }
 
 
   // Like a note
   const likeNote = async ({ id, liked }) => {
+
     const response = await fetch(`${url}/api/notes/updatenote/${id}`, {
       method: 'PUT',
       headers: {
@@ -107,13 +109,14 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ liked })
     })
+    // eslint-disable-next-line
     const res = await response.json()
     // console.log(res);
 
     // this will create a new copy of notes array so that we can update notes state using setState
-    let newNotes = JSON.parse(JSON.stringify(notes))
+    let newNotes = [...notes]
 
-    newNotes.map((note) => {
+    newNotes.forEach(note => {
       if (note._id === id) {
         note.liked = liked
       }
@@ -121,6 +124,7 @@ const NoteState = (props) => {
 
     setNotes(newNotes)
   }
+
 
   return (
     <noteContext.Provider value={{ notes, getNotes, searchNotes, addNote, editNote, likeNote, deleteNote }}>

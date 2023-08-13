@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
-import About from './components/About'
 import Navbar from './components/Navbar'
 import NoteState from './context/notes/NoteState'
 import Alert from './components/Alert'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import Notes from './components/Notes'
-
+import Login from './components/Auth/Login'
+import Signup from './components/Auth/Signup'
+import Notes from './components/Notes/Notes'
 
 const App = () => {
   const [alert, setAlert] = useState(null);
@@ -30,7 +28,6 @@ const App = () => {
             <Route path='/' exact element={<Home showAlert={showAlert} />} />
             <Route path='/search' exact element={<Notes showAlert={showAlert} />} />
             <Route path='/liked' exact element={<Notes showAlert={showAlert} />} />
-            <Route path='/about' exact element={<About />} />
             <Route path='/login' exact element={<Login showAlert={showAlert} />} />
             <Route path='/signup' exact element={<Signup showAlert={showAlert} />} />
           </Routes>

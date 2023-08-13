@@ -1,13 +1,13 @@
 import React from 'react'
-import Notes from './Notes'
-import AddNote from './AddNote'
+import Notes from './Notes/Notes'
+import AddNote from './Notes/AddNote'
 
-
-const Home = ({showAlert}) => {
+const Home = ({ showAlert }) => {
   return (
     <div>
       <AddNote showAlert={showAlert} />
-      <Notes showAlert={showAlert}/>
+     
+      <Notes showAlert={showAlert} />
     </div>
   )
 }

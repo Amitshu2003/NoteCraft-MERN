@@ -21,7 +21,6 @@ const Signup = ({ showAlert }) => {
             body: JSON.stringify({ name, email, password })
         })
         const res = await response.json()
-        console.log(res);
 
         if (res.success) {
             //save the auth token and redirect to home page
@@ -33,7 +32,6 @@ const Signup = ({ showAlert }) => {
         }
 
         setCredentials({ name: "", email: "", password: "", cpassword: "" })
-
     }
 
 

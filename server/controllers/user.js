@@ -30,7 +30,7 @@ export const createUser = async (req, res) => {
         // sending token 
         const authToken = jwt.sign({ id: user.id }, 'secret')
         success = true
-        res.json({ success, authToken })
+        res.json({ success, authToken })    
 
     } catch (error) {
         console.log(error);
@@ -67,9 +67,9 @@ export const loginUser = async (req, res) => {
 export const getUser = async (req, res) => {
     try {
         const userId = req.userId
+        //selecting everything except password
         const user = await User.findById(userId).select("-password")
         res.json(user)
-
     } catch (error) {
         console.log(error);
         res.status(500).send("Internal Server Error")

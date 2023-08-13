@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import noteContext from '../context/notes/noteContext'
+import noteContext from '../../context/notes/noteContext'
 
 
 const AddNote = ({showAlert}) => {
@@ -24,7 +24,7 @@ const AddNote = ({showAlert}) => {
 
     return (
         <div>
-            <div className='container my-3'>
+            <div className='container'>
                 <h2>Add a Note</h2>
                 <form className='my-3'>
                     <div className="mb-3">
